@@ -16,6 +16,8 @@ public:
     void run();
 
 private:
+    void update_ui();
+
     struct GLFWwindow *m_window {};
 };
 

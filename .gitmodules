@@ -4,3 +4,6 @@
 [submodule "interface/external/imgui"]
 	path = interface/external/imgui
 	url = https://github.com/ocornut/imgui.git
+[submodule "interface/external/implot"]
+	path = interface/external/implot
+	url = https://github.com/epezent/implot.git
