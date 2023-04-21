@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 
-project(daq LANGUAGES CXX)
+project(daq_interface LANGUAGES CXX)
 
 add_subdirectory(src)
 
