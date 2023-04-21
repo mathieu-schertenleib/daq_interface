@@ -16,6 +16,9 @@ public:
     void run();
 
 private:
+    void init();
+    void shutdown();
+
     void update_ui();
 
     struct GLFWwindow *m_window {};

@@ -19,8 +19,15 @@ set(IMPLOT_FILES
 add_executable(daq
         main.cpp
         application.cpp application.hpp
+        port.hpp
         ${IMGUI_FILES}
         ${IMPLOT_FILES})
+
+if (WIN32)
+    target_sources(daq PRIVATE port_win.cpp)
+else ()
+    target_sources(daq PRIVATE port_unix.cpp)
+endif ()
 
 target_include_directories(daq PRIVATE
         .
@@ -30,7 +37,7 @@ target_include_directories(daq PRIVATE
 
 target_compile_features(daq PRIVATE cxx_std_20)
 
-target_link_libraries(daq OpenGL::GL glfw)
+target_link_libraries(daq PRIVATE OpenGL::GL glfw fmt::fmt)
 
 set(CLANG_OPTIONS
         -Wall

@@ -1,9 +1,12 @@
-[submodule "interface/external/glfw"]
-	path = interface/external/glfw
-	url = https://github.com/glfw/glfw.git
-[submodule "interface/external/imgui"]
-	path = interface/external/imgui
-	url = https://github.com/ocornut/imgui.git
-[submodule "interface/external/implot"]
-	path = interface/external/implot
-	url = https://github.com/epezent/implot.git
+[submodule "external/glfw"]
+	path = external/glfw
+	url = https://github.com/glfw/glfw
+[submodule "external/imgui"]
+	path = external/imgui
+	url = https://github.com/ocornut/imgui
+[submodule "external/implot"]
+	path = external/implot
+	url = https://github.com/epezent/implot
+[submodule "external/fmt"]
+	path = external/fmt
+	url = https://github.com/fmtlib/fmt
