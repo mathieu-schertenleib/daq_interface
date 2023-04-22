@@ -1,5 +1,7 @@
 #include "application.hpp"
 
+#include "logging.hpp"
+
 #ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wold-style-cast"
@@ -15,14 +17,12 @@
 
 #include <GLFW/glfw3.h>
 
-#include <iostream>
-
 namespace
 {
 
 void glfw_error_callback(int error, const char *description)
 {
-    std::cerr << "GLFW error " << error << ": " << description << '\n';
+    log_error("GLFW error {}: {}\n", error, description);
 }
 
 } // namespace

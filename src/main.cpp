@@ -1,36 +1,28 @@
 #include "application.hpp"
-
-#include <fmt/color.h>
+#include "logging.hpp"
 
 #include <cstdlib>
-#include <iostream>
+#include <stdexcept>
 
 int main()
 {
     try
     {
-        fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold,
-                   "Hello, {}!\n",
-                   "world");
-        fmt::print(fg(fmt::color::floral_white) | bg(fmt::color::slate_gray) |
-                       fmt::emphasis::underline,
-                   "Hello, {}!\n",
-                   "мир");
-        fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
-                   "Hello, {}!\n",
-                   "世界");
+        log_info("This is an info message {}\n", 0);
+        log_warning("This is a warning message {}\n", 1);
+        log_error("This is an error message {}\n", 2);
 
         Application app;
         app.run();
     }
     catch (const std::exception &e)
     {
-        std::cerr << e.what() << '\n';
+        log_error("Exception thrown: {}\n", e.what());
         return EXIT_FAILURE;
     }
     catch (...)
     {
-        std::cerr << "Unknown exception thrown\n";
+        log_error("Unknown exception thrown\n");
         return EXIT_FAILURE;
     }
 

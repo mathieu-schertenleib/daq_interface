@@ -1,8 +1,8 @@
 #include "port.hpp"
 
-#include <windows.h>
+#include "logging.hpp"
 
-#include <iostream>
+#include <windows.h>
 
 namespace
 {
@@ -22,7 +22,7 @@ bool open_port(const char *name)
                           nullptr);
     if (g_handle == INVALID_HANDLE_VALUE)
     {
-        std::cerr << "Failed to open port \"" << name << "\"\n";
+        log_error("Failed to open port \"{}\"", name);
         return false;
     }
 
@@ -31,5 +31,5 @@ bool open_port(const char *name)
 
 void close_port()
 {
-    std::cerr << "UNIMPLEMENTED\n";
+    log_error("UNIMPLEMENTED\n");
 }

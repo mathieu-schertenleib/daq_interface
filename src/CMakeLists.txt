@@ -20,6 +20,7 @@ add_executable(daq_interface
         main.cpp
         application.cpp application.hpp
         port.hpp
+        logging.hpp
         ${IMGUI_FILES}
         ${IMPLOT_FILES})
 
