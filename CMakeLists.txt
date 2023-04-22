@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.19)
 
 project(daq_interface LANGUAGES CXX)
 
+find_package(OpenGL REQUIRED)
+
 add_subdirectory(src)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
