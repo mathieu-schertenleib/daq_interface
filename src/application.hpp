@@ -1,27 +1,22 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-class Application
+#include "core_application.hpp"
+
+#include <chrono>
+#include <condition_variable>
+#include <thread>
+
+class Daq_application : public Core_application
 {
-public:
-    [[nodiscard]] Application();
-    ~Application();
-
-    Application(const Application &) = delete;
-    Application &operator=(const Application &) = delete;
-
-    Application(Application &&) = default;
-    Application &operator=(Application &&) = default;
-
-    void run();
-
 private:
-    void init();
-    void shutdown();
+    void update() override;
 
-    void update_ui();
+    void start_timer();
+    void stop_timer();
 
-    struct GLFWwindow *m_window {};
+    std::jthread m_timer_thread;
+    std::condition_variable m_timer_cv;
 };
 
 #endif // APPLICATION_HPP

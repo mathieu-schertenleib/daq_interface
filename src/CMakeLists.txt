@@ -4,13 +4,16 @@ add_compile_definitions(
         IMGUI_USER_CONFIG="${IMGUI_CONFIG}"
         _CRT_SECURE_NO_WARNINGS)
 
+
+message(CHECK_START "Checking for IPO support")
 include(CheckIPOSupported)
 check_ipo_supported(RESULT ipo_supported_result OUTPUT ipo_supported_output)
 if (ipo_supported_result)
+    message(CHECK_PASS "supported")
     set_property(GLOBAL PROPERTY INTERPROCEDURAL_OPTIMIZATION_RELEASE TRUE)
     set_property(GLOBAL PROPERTY INTERPROCEDURAL_OPTIMIZATION_MIN_SIZE_REL TRUE)
 else ()
-    message(WARNING "IPO is not supported: ${ipo_supported_output}")
+    message(CHECK_FAIL "not supported")
 endif ()
 
 
@@ -46,6 +49,7 @@ target_link_libraries(implot PRIVATE imgui)
 add_executable(daq_interface
         main.cpp
         application.cpp application.hpp
+        core_application.cpp core_application.hpp
         port.hpp
         logging.hpp)
 
